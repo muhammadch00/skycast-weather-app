@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check current weather and a five-day forecast for any city.">
+    <meta name="theme-color" content="#080d1b">
+
+    <title>SkyCast | Weather App</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JavaScript will be connected later -->
+</head>
+
+<body>
+
+    <!-- Background Effects -->
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <main class="app-shell">
+
+        <!-- Header -->
+        <header class="topbar">
+            <a href="./" class="brand" aria-label="SkyCast home">
+                <span class="brand-mark" aria-hidden="true">✦</span>
+                <span>skycast<span class="brand-period">.</span></span>
+            </a>
+
+            <span class="live-label">
+                <span class="live-dot"></span>
+                WEATHER APP
+            </span>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="intro">
+            <p class="eyebrow">YOUR DAY, AT A GLANCE</p>
+
+            <h1>
+                Weather,
+                <span>without the guesswork.</span>
+            </h1>
+
+            <p class="intro-copy">
+                A little clarity for whatever the day brings.
+            </p>
+        </section>
+
+        <!-- City Search Form -->
+        <section class="search-panel" aria-label="Search weather by city">
+
+            <form id="weatherForm" class="search-form">
+
+                <label for="cityInput" class="sr-only">
+                    Enter city name
+                </label>
+
+                <span class="search-icon" aria-hidden="true">⌕</span>
+
+                <input type="search" id="cityInput" name="city" placeholder="Search a city, e.g. Lahore"
+                    autocomplete="off" required>
+
+                <button id="searchButton" type="submit">
+                    <span>Search</span>
+                    <span aria-hidden="true">↗</span>
+                </button>
+
+            </form>
+
+            <!-- Loading, success and error messages -->
+            <p id="message" class="status-message" role="status" aria-live="polite">
+                Search for a city to see its latest weather.
+            </p>
+
+        </section>
+
+        <!-- Current Weather -->
+        <section id="weatherResult" class="weather-content" aria-label="Current weather and forecast">
+
+            <div class="current-card">
+
+                <!-- City and Weather Icon -->
+                <div class="current-top">
+
+                    <div>
+                        <p class="eyebrow">CURRENT CONDITIONS</p>
+
+                        <h2 id="cityName">Lahore, Pakistan</h2>
+
+                        <p id="localDate" class="muted">
+                            Your local weather snapshot
+                        </p>
+                    </div>
+
+                    <div id="weatherIcon" class="weather-symbol" aria-hidden="true">
+                        ☀
+                    </div>
+
+                </div>
+
+                <!-- Temperature and Condition -->
+                <div class="temperature-row">
+
+                    <p id="temperature" class="temperature">
+                        28<span>°C</span>
+                    </p>
+
+                    <div class="condition-block">
+
+                        <p id="condition" class="condition">
+                            Mostly clear
+                        </p>
+
+                        <p id="feelsLike" class="muted">
+                            Feels like 31°
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="current-divider"></div>
+
+                <!-- Weather Details -->
+                <div class="metrics-grid">
+
+                    <article class="metric">
+                        <span class="metric-icon" aria-hidden="true">◉</span>
+
+                        <div>
+                            <p class="metric-label">Humidity</p>
+                            <p id="humidity" class="metric-value">62%</p>
+                        </div>
+                    </article>
+
+                    <article class="metric">
+                        <span class="metric-icon" aria-hidden="true">↗</span>
+
+                        <div>
+                            <p class="metric-label">Wind Speed</p>
+                            <p id="windSpeed" class="metric-value">4.3 km/h</p>
+                        </div>
+                    </article>
+
+                    <article class="metric">
+                        <span class="metric-icon" aria-hidden="true">☼</span>
+
+                        <div>
+                            <p class="metric-label">Daylight</p>
+                            <p id="daylight" class="metric-value">Daytime</p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+            <!-- Five-Day Forecast -->
+            <section class="forecast-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">PLAN AHEAD</p>
+                        <h2>7-day forecast</h2>
+                    </div>
+
+                    <span class="section-note">Daily outlook</span>
+
+                </div>
+
+                <!-- JavaScript will render forecast cards here -->
+                <div id="forecastGrid" class="forecast-grid">
+
+
+
+                    <article class="forecast-card">
+                        <p class="forecast-day">TUE</p>
+                        <span class="forecast-icon" aria-hidden="true">☁</span>
+                        <p class="forecast-condition">Cloudy</p>
+                        <p class="forecast-temp">29° <span>21°</span></p>
+                    </article>
+
+                    <article class="forecast-card">
+                        <p class="forecast-day">WED</p>
+                        <span class="forecast-icon" aria-hidden="true">🌦</span>
+                        <p class="forecast-condition">Showers</p>
+                        <p class="forecast-temp">27° <span>20°</span></p>
+                    </article>
+
+                    <article class="forecast-card">
+                        <p class="forecast-day">THU</p>
+                        <span class="forecast-icon" aria-hidden="true">☀</span>
+                        <p class="forecast-condition">Sunny</p>
+                        <p class="forecast-temp">32° <span>23°</span></p>
+                    </article>
+
+                    <article class="forecast-card">
+                        <p class="forecast-day">FRI</p>
+                        <span class="forecast-icon" aria-hidden="true">⛅</span>
+                        <p class="forecast-condition">Partly cloudy</p>
+                        <p class="forecast-temp">30° <span>22°</span></p>
+                    </article>
+                    <article class="forecast-card">
+                        <p class="forecast-day">SAT</p>
+                        <span class="forecast-icon" aria-hidden="true">⛅</span>
+                        <p class="forecast-condition">Partly cloudy</p>
+                        <p class="forecast-temp">30° <span>22°</span></p>
+                    </article>
+                    <article class="forecast-card">
+                        <p class="forecast-day">SUN</p>
+                        <span class="forecast-icon" aria-hidden="true">⛅</span>
+                        <p class="forecast-condition">Partly cloudy</p>
+                        <p class="forecast-temp">30° <span>22°</span></p>
+                    </article>
+                    <article class="forecast-card">
+                        <p class="forecast-day">MON</p>
+                        <span class="forecast-icon" aria-hidden="true">☀</span>
+                        <p class="forecast-condition">Clear</p>
+                        <p class="forecast-temp">31° <span>22°</span></p>
+                    </article>
+                </div>
+
+                <p id="forecastSummary" class="forecast-summary">
+                    Sample forecast — live weather data will be connected later.
+                </p>
+
+            </section>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+
+            <span>
+                Made for curious skies <span aria-hidden="true">✦</span>
+            </span>
+
+            <span>
+                Weather data by
+                <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">
+                    Open-Meteo
+                </a>
+            </span>
+
+        </footer>
+
+    </main>
+    <script src="/weather-app-week2/script.js"></script>
+</body>
+
+</html>
